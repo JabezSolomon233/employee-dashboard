@@ -1,31 +1,26 @@
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
+import { FaUsers, FaChartBar, FaSignOutAlt } from "react-icons/fa"
 
 export default function Sidebar() {
   return (
-    <div className="w-64 h-screen bg-gray-900 text-white flex flex-col">
-      {/* Brand */}
-      <div className="p-6 text-2xl font-bold border-b border-gray-700">EMS</div>
+    <div className="w-64 min-h-screen bg-slate-900 text-white p-4">
+      <h1 className="text-2xl font-bold mb-8">HR Dashboard</h1>
 
-      {/* Navigation */}
-      <nav className="mt-6 flex-1 px-4 space-y-2">
+      <nav className="space-y-2">
         <NavLink
           to="/dashboard"
-          className={({ isActive }) =>
-            `block px-4 py-2 rounded ${isActive ? "bg-blue-600" : "hover:bg-gray-700"}`
-          }
+          className="flex items-center gap-3 p-2 rounded hover:bg-slate-700"
         >
-          Dashboard
+          <FaChartBar /> Dashboard
         </NavLink>
 
         <NavLink
           to="/employees"
-          className={({ isActive }) =>
-            `block px-4 py-2 rounded ${isActive ? "bg-blue-600" : "hover:bg-gray-700"}`
-          }
+          className="flex items-center gap-3 p-2 rounded hover:bg-slate-700"
         >
-          Employees
+          <FaUsers /> Employees
         </NavLink>
       </nav>
     </div>
-  );
+  )
 }

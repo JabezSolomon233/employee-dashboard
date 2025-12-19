@@ -1,25 +1,26 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import Login from "./pages/Login";
-import DashboardHome from "./pages/dashboard/DashboardHome";
-import EmployeeList from "./pages/employees/EmployeeList";
+import { Routes, Route, Navigate } from "react-router-dom"
+import Login from "./pages/Login"
+import DashboardHome from "./pages/dashboard/DashboardHome"
+import EmployeeList from "./pages/employees/EmployeeList"
+import Layout from "./components/Layout"
 
 export default function App() {
   return (
     <Routes>
-      {/* Redirect root to login */}
+      {/* Root redirect */}
       <Route path="/" element={<Navigate replace to="/login" />} />
 
-      {/* Login page */}
+      {/* Login */}
       <Route path="/login" element={<Login />} />
 
-      {/* Dashboard */}
-      <Route path="/dashboard" element={<DashboardHome />} />
+      {/* Dashboard + Employees nested under Layout */}
+      <Route element={<Layout />}>
+        <Route path="/dashboard" element={<DashboardHome />} />
+        <Route path="/employees" element={<EmployeeList />} />
+      </Route>
 
-      {/* Employee list */}
-      <Route path="/employees" element={<EmployeeList />} />
-
-      {/* Catch-all: redirect unknown paths to login */}
+      {/* Catch-all */}
       <Route path="*" element={<Navigate replace to="/login" />} />
     </Routes>
-  );
+  )
 }
